@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game Tebak Angka</title>
+<style>
+body{
+    font-family: Arial, sans-serif;
+    text-align:center;
+    background:#f0f0f0;
+    margin-top:50px;
+}
+.container{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    width:300px;
+    margin:auto;
+    box-shadow:0 0 10px rgba(0,0,0,.2);
+}
+input{
+    padding:8px;
+    width:80px;
+}
+button{
+    padding:8px 15px;
+    cursor:pointer;
+}
+#hasil{
+    margin-top:15px;
+    font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>🎮 Tebak Angka</h2>
+    <p>Tebak angka dari 1 - 100</p>
+
+    <input type="number" id="tebakan">
+    <button onclick="cek()">Tebak</button>
+
+    <p id="hasil"></p>
+</div>
+
+<script>
+let angka = Math.floor(Math.random()*100)+1;
+let percobaan = 0;
+
+function cek(){
+    let tebakan = Number(document.getElementById("tebakan").value);
+    percobaan++;
+
+    if(tebakan === angka){
+        document.getElementById("hasil").innerHTML =
+        "🎉 Benar! Kamu menang dalam " + percobaan + " percobaan.";
+    }else if(tebakan < angka){
+        document.getElementById("hasil").innerHTML = "⬆️ Terlalu kecil!";
+    }else{
+        document.getElementById("hasil").innerHTML = "⬇️ Terlalu besar!";
+    }
+}
+</script>
+
+</body>
+</html>
